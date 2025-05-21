@@ -1,17 +1,11 @@
 {
     "sqltools.connections": [
         {
-            "mysqlOptions": {
-                "authProtocol": "default",
-                "enableSsl": "Disabled"
-            },
             "previewLimit": 50,
-            "server": "localhost",
-            "port": 3306,
-            "driver": "MySQL",
+            "driver": "SQLite",
             "name": "localhost",
-            "database": "Player_List",
-            "username": "FIRST_PLAYER"
+            "database": "user.db"
         }
-    ]
+    ],
+    "sqltools.useNodeRuntime": true
 }

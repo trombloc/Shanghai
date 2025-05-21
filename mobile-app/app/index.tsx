@@ -1,17 +1,19 @@
 import { Text, View, StyleSheet, TextInput, Button } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "expo-router";
-import * as SQLite from 'expo-sqlite';
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const handleLogin = async () => {
+
+  const handleLogin = () => {
 
     if (username !== "" && password === "password") {
       // Navigate to the game room
+
+
       router.replace("/game");
     }
   }
