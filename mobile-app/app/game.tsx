@@ -46,6 +46,11 @@ const styles = StyleSheet.create({
     handContainer: {
         marginTop: 20,
         alignItems: "center",
+        borderColor: "black",
+        borderWidth: 1,
+        bottom: 0,
+        height: "25%",
+        width: "75%",
     },
     handTitle: {
         fontSize: 18,
