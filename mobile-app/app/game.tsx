@@ -25,12 +25,15 @@ export default function Game() {
 
             </TouchableOpacity>
             <View style={styles.handContainer}>
-                <Text style={styles.handTitle}>Your Hand:</Text>
+                <Image style={styles.cardImage}
+                    source={require("../assets/images/2C.svg")}
+                />
+                {/* <Text style={styles.handTitle}>Your Hand:</Text>
                 {hand.map((card, index) => (
                     <Text key={index} style={styles.cardText}>
                         Row: {card.row}, Card: {card.card}
                     </Text>
-                ))}
+                ))} */}
             </View>
         </View>
     );
@@ -57,8 +60,8 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         marginBottom: 10,
     },
-    cardText: {
-        fontSize: 16,
+    cardImage: {
+        left: 0,
         marginBottom: 5,
     },
 });
