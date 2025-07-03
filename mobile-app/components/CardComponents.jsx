@@ -50,8 +50,8 @@ import KingH from '../assets/images/KH.svg';
 import KingS from '../assets/images/KS.svg';
 import KingC from '../assets/images/KC.svg';
 import KingD from '../assets/images/KD.svg';
-import red_joker from '../assets/images/joker.png';
-import black_joker from '../assets/images/joker.png';
+import red_joker from '../assets/images/joker_red.svg';
+import black_joker from '../assets/images/joker_black.svg';
 
 export const CardMap = {
     "AH": AH, "AS": AS, "AC": AC, "AD": AD,
