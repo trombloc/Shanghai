@@ -16,6 +16,7 @@ export default function Game() {
     type Card = { id: string; suit?: string; value?: string; };
     const [deck, setDeck] = useState<Card[]>(shuffle(createDeck()));
     const [hand, setHand] = useState<Card[]>([]);
+    const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
     function shuffle(array: Card[]) {
         return [...array].sort(() => Math.random() - 0.5);
@@ -34,19 +35,23 @@ export default function Game() {
             </TouchableOpacity>
 
             <Text style={{ fontSize: 18, marginBottom: 10 }}>Your Hand:</Text>
-            <ScrollView horizontal>
-                {hand.map((card, index) => {
-                    const CardComponent = (CardMap as { [key: string]: any })[card.id];
-                    console.log(card.id, CardComponent);
-                    return (
-                        <View key={index} style={{ marginRight: 10 }}>
-                            {CardComponent ? <CardComponent width={60} height={90} /> : <Text>❓</Text>}
-                        </View>
+            <View style={styles.handContainer}>
+                <ScrollView horizontal>
+                    {hand.map((card, index) => {
+                        const CardComponent = (CardMap as { [key: string]: any })[card.id];
+                        return (
+                            <View key={index} style={[
+                                styles.cardWrapper,
+                                index !== 0 && { marginLeft: -30 }]}>
+                                <View key={index}>
+                                    {CardComponent ? <CardComponent width={60} height={90} /> : <Text>❓</Text>}
+                                </View>
+                            </View>
 
-
-                    );
-                })}
-            </ScrollView>
+                        );
+                    })}
+                </ScrollView>
+            </View>
         </View>
     );
 };
@@ -59,12 +64,13 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     handContainer: {
-        marginTop: 20,
+        position: "absolute",
+        bottom: "15%",
+        left: "5%",
         borderColor: "black",
         borderWidth: 1,
-        bottom: 0,
-        height: "25%",
-        width: "75%",
+        height: "12.5%",
+        width: "100%",
     },
     handRow: {
         flexDirection: "row",
