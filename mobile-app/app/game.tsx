@@ -27,14 +27,26 @@ export default function Game() {
         const [drawnCard, ...rest] = deck;
         setDeck(rest);
         setHand(prev => [...prev, drawnCard]);
-    };
+    }
+
+    const discardCard = (index: number) => {
+        if (index < 0 || index >= hand.length) return;
+        const newHand = [...hand];
+        newHand.splice(index, 1);
+        setHand(newHand);
+        if (selectedIndex === index) {
+            setSelectedIndex(null);
+        } else if (selectedIndex !== null && selectedIndex > index) {
+            setSelectedIndex(selectedIndex - 1);
+        }
+    }
+
     return (
         <View style={{ flex: 1, padding: 20 }}>
-            <TouchableOpacity onPress={drawCard} style={{ marginBottom: 20 }}>
-                <Text style={{ fontSize: 24 }}>🃏 Tap to Draw a Card</Text>
+            <TouchableOpacity onPress={drawCard} style={{ alignItems: "center" }}>
+                <Text style={{ fontSize: 96, marginBottom: 20 }}>🃏</Text>
             </TouchableOpacity>
 
-            <Text style={{ fontSize: 18, marginBottom: 10 }}>Your Hand:</Text>
             <View style={styles.handContainer}>
                 <ScrollView horizontal>
                     {hand.map((card, index) => {
